@@ -1,15 +1,15 @@
-#ifndef OMNIVORE_STORAGE_LUXIO_H
-#define OMNIVORE_STORAGE_LUXIO_H
+#ifndef OMNIVORE_STORAGE_TOKYOCABINET_H
+#define OMNIVORE_STORAGE_TOKYOCABINET_H
 
-#include <luxio/btree.h>
+#include <tcadb.h>
 #include "storage.h"
 
 namespace Omnivore {
   namespace Storage {
-    class LuxIO : public Omnivore::Storage::Base<Lux::IO::Btree *> {
+    class TokyoCabinet : public Omnivore::Storage::Base<TCADB> {
    public:
-      LuxIO  () {};
-      ~LuxIO () {};
+      TokyoCabinet  () {};
+      ~TokyoCabinet () {};
 
       bool open  (std::string name);
       bool close ();

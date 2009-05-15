@@ -12,6 +12,7 @@ namespace Omnivore {
 
     template <class T>
     class Base {
+   protected:
       T _storage;
 
    public:
