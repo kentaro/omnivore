@@ -21,7 +21,7 @@ namespace Omnivore {
 
       virtual bool open  (std::string name) = 0;
       virtual bool close () = 0;
-      virtual Omnivore::Storage::data_t *
+      virtual Omnivore::Storage::data_t
                    get   (const void *key, int key_size) = 0;
       virtual bool put   (const void *key, int key_size, const void *value, int value_size) = 0;
       virtual bool del   (const void *key, int key_size) = 0;

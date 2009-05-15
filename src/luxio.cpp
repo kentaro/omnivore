@@ -1,4 +1,5 @@
 #include "luxio.h"
+#include "util.h"
 
 bool Omnivore::Storage::LuxIO::open (std::string name) {
   Lux::IO::Btree* db = new Lux::IO::Btree(Lux::IO::NONCLUSTER);
@@ -16,17 +17,19 @@ void Omnivore::Storage::LuxIO::free () {
   return delete _storage;
 }
 
-Omnivore::Storage::data_t *Omnivore::Storage::LuxIO::get (const void *key, int key_size) {
+Omnivore::Storage::data_t
+Omnivore::Storage::LuxIO::get (const void *key, int key_size) {
   Lux::IO::data_t *value = _storage->get(key, key_size);
-  Omnivore::Storage::data_t *result;
+  Omnivore::Storage::data_t result;
   if (value != NULL) {
-    result->data = value->data;
-    result->size = value->size;
+    result.data = Omnivore::duplicate_memory(value->data, value->size);
+    result.size = value->size;
   }
   else {
-    result->data = NULL;
-    result->size = 0;
+    result.data = NULL;
+    result.size = 0;
   }
+  _storage->clean_data(value);
   return result;
 }
 

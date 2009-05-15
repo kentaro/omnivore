@@ -9,9 +9,9 @@ int main () {
 
   db->open("test");
   db->put(key.c_str(), key.length(), value.c_str(), value.length());
-  Omnivore::Storage::data_t *result = db->get(key.c_str(), key.length());
+  Omnivore::Storage::data_t result = db->get(key.c_str(), key.length());
   std::cout << "key: " << key << std::endl;
-  std::cout << "val: " << (char *)result->data << std::endl;
+  std::cout << "val: " << (char *)result.data << std::endl;
   db->close();
   db->free();
 
