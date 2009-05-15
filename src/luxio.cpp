@@ -4,7 +4,8 @@ bool Omnivore::Storage::LuxIO::open (std::string name) {
   Lux::IO::Btree* db = new Lux::IO::Btree(Lux::IO::NONCLUSTER);
   if (!db) return false;
   if (!db->open(name, Lux::IO::DB_CREAT)) return false;
-  return _storage = db;
+  _storage = db;
+  return true;
 }
 
 bool Omnivore::Storage::LuxIO::close () {

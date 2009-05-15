@@ -23,3 +23,5 @@ Thumbs.db
 covered
 *_flymake.pm
 *_flymake.html
+*.bidx
+*.data
